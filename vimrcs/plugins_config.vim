@@ -18,6 +18,7 @@ call plug#begin("~/.vim/autoload/plugged")
   Plug 'dense-analysis/ale'
   Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
   Plug 'tpope/vim-surround'
+  Plug 'mattn/emmet-vim'
 call plug#end()
 
 let g:NERDTreeWinPos = "right"
