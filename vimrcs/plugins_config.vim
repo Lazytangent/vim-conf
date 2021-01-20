@@ -16,6 +16,8 @@ call plug#begin("~/.vim/autoload/plugged")
   Plug 'jiangmiao/auto-pairs'
   Plug 'sheerun/vim-polyglot'
   Plug 'dense-analysis/ale'
+  Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 let g:NERDTreeWinPos = "right"
