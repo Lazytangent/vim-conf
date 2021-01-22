@@ -36,7 +36,7 @@ nnoremap <leader>nm :NERDTreeFocus<cr>
 nnoremap <leader>py :Prettier<cr>
 
 " Vim-Markdown
-let g:markdown_fenced_languages = [ 'html', 'python', 'css', 'js=javascript' ]
+let g:markdown_fenced_languages = [ 'html', 'python', 'css', 'js=javascript', 'javascript', 'json=javascript', 'sass' ]
 
 
 nnoremap <C-p> :FZF<cr>
