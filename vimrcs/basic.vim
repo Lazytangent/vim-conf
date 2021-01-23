@@ -62,9 +62,9 @@ if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
 
-if has("termguicolors")
-  set termguicolors
-endif
+" if has("termguicolors")
+  " set termguicolors
+" endif
 
 set background=dark
 
