@@ -21,7 +21,10 @@ call plug#begin("~/.vim/autoload/plugged")
   Plug 'mattn/emmet-vim'
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-eunuch'
+  Plug 'arcticicestudio/nord-vim'
 call plug#end()
+
+colorscheme nord
 
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeShowHidden = 1
