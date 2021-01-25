@@ -25,6 +25,7 @@ call plug#begin("~/.vim/autoload/plugged")
 call plug#end()
 
 colorscheme nord
+" colorscheme onedark
 
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeShowHidden = 1
