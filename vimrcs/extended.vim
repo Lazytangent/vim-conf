@@ -1,4 +1,4 @@
-" colorscheme onedark
+colorscheme onedark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
