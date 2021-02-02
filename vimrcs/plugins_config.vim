@@ -24,7 +24,9 @@ call plug#begin("~/.vim/autoload/plugged")
   Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
-colorscheme elflord
+" colorscheme elflord
+" colorscheme nord
+" colorscheme onedark
 
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeShowHidden = 1
