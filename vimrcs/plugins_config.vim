@@ -45,6 +45,15 @@ nnoremap <leader>py :Prettier<cr>
 " Vim-Markdown
 let g:markdown_fenced_languages = [ 'html', 'python', 'css', 'js=javascript', 'javascript', 'json=javascript', 'sass' ]
 
+" Vim-Onedark
+if (has("autocmd") && !has("gui_running"))
+  augroup colors
+    autocmd!
+    let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background })
+  augroup END
+endif
+
 
 nnoremap <C-p> :FZF<cr>
 let g:fzf_action = {
