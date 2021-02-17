@@ -24,17 +24,15 @@ call plug#begin("~/.vim/autoload/plugged")
   Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
-" colorscheme elflord
-" colorscheme nord
-" colorscheme onedark
-
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeeMinimalUI = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERGTreeStatusLink = ''
+
 " Automatically close nvim if NERDTree is the only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Toggle
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
