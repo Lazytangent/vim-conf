@@ -6,13 +6,9 @@ let g:ale_disable_lsp = 1
 call plug#begin("~/.nvim/plugged")
   " Plugin Section
   " Themes
-  Plug 'dracula/vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'joshdick/onedark.vim'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'gregsexton/Atom'
-  Plug 'rakr/vim-one'
 
   " Languages/Syntax
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -35,14 +31,11 @@ call plug#begin("~/.nvim/plugged")
   " General Use
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'
   Plug 'jiangmiao/auto-pairs'
   Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-eunuch'
   Plug 'terryma/vim-smooth-scroll'
 
 call plug#end()
@@ -70,7 +63,9 @@ nnoremap <leader>py :Prettier<cr>
 
 " Vim-Markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:markdown_fenced_languages = [ 'html', 'python', 'css', 'javascript', 'js=javascript', 'json=javascript', 'sass' ]
+let g:markdown_fenced_languages = [ 'html', 'python', 'css',
+      \ 'javascript', 'js=javascript', 'json=javascript',
+      \ 'sass' ]
 
 " Vim-TailwindCSS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -98,15 +93,6 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css',
 nnoremap <leader>aF :ALEFix<cr>
 nnoremap <leader>aI :ALEInfo<cr>
 
-" Open fzf search
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-p> :FZF<cr>
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
-
 " ColorScheme Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if (has("autocmd") && !has("gui_running"))
@@ -132,4 +118,3 @@ nnoremap <leader>gst :Gst<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd vimenter * let &shell='/bin/zsh -i'
 
-let $FZF_DEFAULT_COMMAND = 'ag -g "" '
