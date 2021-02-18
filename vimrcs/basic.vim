@@ -1,3 +1,6 @@
+let mapleader = ","
+noremap \ ,
+
 source ~/.vim/vimrcs/filetypes.vim
 source ~/.vim/vimrcs/plugins_config.vim
 
@@ -8,9 +11,6 @@ filetype plugin on
 filetype indent on
 set autoread
 au FocusGained,BufEnter * checktime
-
-let mapleader = ","
-noremap \ ,
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
