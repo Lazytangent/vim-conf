@@ -1,8 +1,3 @@
-set runtimepath+=~/.vim
-
-source ~/.vim/vimrcs/filetypes.vim
-source ~/.vim/vimrcs/extended.vim
-
 let mapleader = ","
 noremap \ ,
 
