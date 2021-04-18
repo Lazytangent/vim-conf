@@ -1,5 +1,3 @@
-colorscheme onedark
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
 "    means that you can undo even when you close a buffer/VIM
@@ -31,4 +29,4 @@ cnoremap <C-K>		<C-U>
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
-
+autocmd vimenter * let &shell='/bin/zsh -i'

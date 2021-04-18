@@ -1,9 +1,6 @@
 let mapleader = ","
 noremap \ ,
 
-source ~/.vim/vimrcs/filetypes.vim
-source ~/.vim/vimrcs/plugins_config.vim
-
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=500
@@ -14,9 +11,6 @@ au FocusGained,BufEnter * checktime
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
-nnoremap <leader>gw :Gw<cr>
-nnoremap <leader>gc :Gcommit<cr>
-nnoremap <leader>gp :Gpush<cr>
 
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
@@ -64,17 +58,8 @@ nnoremap <leader>O O<Esc>
 syntax enable
 set background=dark
 set termguicolors
-colorscheme onedark
 set encoding=utf8
 set ffs=unix,dos,mac
-
-if (has("autocmd") && !has("gui_running"))
-  augroup colors
-    autocmd!
-    let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background })
-  augroup END
-endif
 
 " Files, backups and undo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
