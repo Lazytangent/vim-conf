@@ -1,10 +1,7 @@
 #!/bin/sh
 set -e
 
-try
-  cat ~/.vimrc > ~/.vimrc.pre
-catch
-endtry
+cat ~/.vimrc > ~/.vimrc.pre
 
 cat ~/.vim_conf/.vimrc > ~/.vimrc
 echo "Installed successfully"
