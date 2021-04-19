@@ -1,8 +1,3 @@
-set runtimepath+=~/.vim
-
-source ~/.vim/vimrcs/filetypes.vim
-source ~/.vim/vimrcs/extended.vim
-
 let mapleader = ","
 noremap \ ,
 
@@ -46,7 +41,6 @@ set magic
 set showmatch
 set mat=2
 set foldcolumn=1
-set noshowmode
 set nu
 set rnu
 set clipboard=unnamed
