@@ -57,7 +57,6 @@ nnoremap <leader>O O<Esc>
 syntax enable
 set background=dark
 set termguicolors
-set colorscheme=ron
 set encoding=utf8
 set ffs=unix,dos,mac
 
