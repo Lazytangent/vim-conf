@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-cat ~/.vimrc > ~/.vimrc.pre
+cp ~/.vimrc > ~/.vimrc.pre
 
-cat ~/.vim_conf/.vimrc > ~/.vimrc
+cp ~/.vim_conf/.vimrc > ~/.vimrc
 echo "Installed successfully"
