@@ -1,13 +1,12 @@
-let mapleader = ","
-noremap \ ,
-
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=500
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 set autoread
 au FocusGained,BufEnter * checktime
+
+let mapleader = ","
+noremap \ ,
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
@@ -27,9 +26,10 @@ else
   set wildignore+=*/.git*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
-set ruler
+set showcmd
 set cmdheight=1
-set hid
+set ruler
+set hidden
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set ignorecase
@@ -41,12 +41,17 @@ set magic
 set showmatch
 set mat=2
 set foldcolumn=1
-set nu
-set rnu
+set number
+set relativenumber
 set clipboard=unnamed
 set list
 set listchars=tab:▸\ ,trail:▫
 set mouse=n
+set spell
+
+set path+=**
+command! MakeTags !ctags -R .
+
 autocmd vimenter * let &shell='/bin/zsh -i'
 
 nnoremap <leader>o o<Esc>
@@ -74,12 +79,27 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-set lbr
-set tw=500
-
-set ai
-set si
+set linebreak
+set textwidth=500
 set wrap
+
+set autoindent
+
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Editing mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+fun! CleanExtraSpaces()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
 
 " Visual Mode related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
