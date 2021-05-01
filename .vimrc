@@ -25,7 +25,7 @@ set so=7
 let $LANG='en'
 
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=list:longest,list:full
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
   set wildignore+=.git\*,.hg\*,.svn\*
@@ -241,12 +241,8 @@ inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
 
-" AutoPairs
+" Auto Pairs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap " ""<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
 inoremap {<cr> {<cr>}<Esc>O
 inoremap {;<cr> {<cr>};<Esc>O
 
