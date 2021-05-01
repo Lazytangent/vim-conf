@@ -271,8 +271,6 @@ au FileType python syn keyword pythonDecorator True None False self
 au BufNewFile,BufRead *.jinja set syntax=htmljinja
 au BufNewFile,BufRead *.mako set ft=mako
 
-" au FileType python map <buffer> F :set foldmethod=indent<cr>
-
 au FileType python inoremap <buffer> $r return 
 au FileType python inoremap <buffer> $i import 
 au FileType python inoremap <buffer> $p print 
@@ -284,15 +282,13 @@ au FileType python map <buffer> <leader>D ?def
 au FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
 au BufNewFile,BufRead *.py setl ts=4 sts=4 expandtab autoindent shiftwidth=4 textwidth=79
 
-
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
 au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
+au FileType javascript setlocal fen
+au FileType javascript setlocal nocindent
 
-" au FileType javascript imap <C-t> $log();<esc>hi
 au FileType javascript imap <C-a> alert();<esc>hi
 
 au FileType javascript inoremap <buffer> $r return 
@@ -308,7 +304,6 @@ function! JavaScriptFold()
     endfunction
     setl foldtext=FoldText()
 endfunction
-
 
 """"""""""""""""""""""""""""""
 " => CoffeeScript section
@@ -342,7 +337,7 @@ autocmd BufRead *.twig set syntax=html filetype=html
 " => Markdown
 """"""""""""""""""""""""""""""
 let vim_markdown_folding_disabled = 1
-au FileType markdown setl shiftwidth=4 softtabstop=4 expandtab tabstop=4
+au FileType markdown setlocal shiftwidth=4 softtabstop=4 expandtab tabstop=4
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
 au BufNewFile,BufRead /*.rasi setf css
