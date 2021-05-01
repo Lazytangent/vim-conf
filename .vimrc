@@ -10,8 +10,14 @@ noremap \ ,
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
-
+cnoremap Q q!
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+nnoremap <leader>o o<Esc>
+nnoremap <leader>O O<Esc>
+nnoremap <leader>qa :qa<cr>
+nnoremap <leader>rnu :set rnu!<cr>
+nnoremap <leader>nnu :set nu!<cr>
 
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -19,6 +25,7 @@ set so=7
 let $LANG='en'
 
 set wildmenu
+set wildmode=longest:full,full
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
   set wildignore+=.git\*,.hg\*,.svn\*
@@ -41,6 +48,7 @@ set magic
 set showmatch
 set mat=2
 set foldcolumn=1
+
 set number
 set relativenumber
 set clipboard=unnamed
@@ -49,13 +57,17 @@ set listchars=tab:▸\ ,trail:▫
 set mouse=n
 set spell
 
+set cursorline
+set foldenable
+set foldlevelstart=10
+
 set path+=**
 command! MakeTags !ctags -R .
 
-autocmd vimenter * let &shell='/bin/zsh -i'
+nmap j gj
+nmap k gk
 
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
+autocmd vimenter * let &shell='/bin/zsh -i'
 
 " Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -228,6 +240,15 @@ inoremap $3 {}<esc>i
 inoremap $4 {<esc>o}<esc>O
 inoremap $q ''<esc>i
 inoremap $e ""<esc>i
+
+" AutoPairs
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap " ""<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<cr> {<cr>}<Esc>O
+inoremap {;<cr> {<cr>};<Esc>O
 
 " open new split panes to right and below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
