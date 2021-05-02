@@ -25,7 +25,7 @@ set so=7
 let $LANG='en'
 
 set wildmenu
-set wildmode=list:longest,list:full
+set wildmode=longest:full,full
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
   set wildignore+=.git\*,.hg\*,.svn\*
@@ -50,6 +50,7 @@ set mat=2
 set foldcolumn=1
 
 set number
+set numberwidth=5
 set relativenumber
 set clipboard=unnamed
 set list
@@ -58,11 +59,8 @@ set mouse=n
 set spell
 
 set cursorline
-
 set foldenable
 set foldlevelstart=10
-nnoremap <leader>fu zM<cr>
-nnoremap <leader>uf zR<cr>
 
 set path+=**
 command! MakeTags !ctags -R .
