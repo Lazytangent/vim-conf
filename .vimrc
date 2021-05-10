@@ -5,27 +5,36 @@ filetype plugin indent on
 set autoread
 au FocusGained,BufEnter * checktime
 
+" Leader setup
 let mapleader = ","
+let localmapleader = "\\"
 noremap \ ,
 
+" Quick Save Commands
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
 cnoremap Q q!
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
+" More things
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
 nnoremap <leader>qa :qa<cr>
+
+" Line numbering shortcuts
 nnoremap <leader>rnu :set rnu!<cr>
 nnoremap <leader>nnu :set nu!<cr>
 
+" Reload vimrc
+nnoremap <localleader>rc :source ~/.vimrc<cr>
+
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set so=7
+set scrolloff=7
 let $LANG='en'
 
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=longest:full,list:full
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
   set wildignore+=.git\*,.hg\*,.svn\*
@@ -54,19 +63,29 @@ set numberwidth=5
 set relativenumber
 set clipboard=unnamed
 set list
-set listchars=tab:▸\ ,trail:▫
-set mouse=n
+" set listchars=tab:▸\ ,trail:▫
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set mouse=a
 set spell
-
 set cursorline
+set modeline
+
 set foldenable
 set foldlevelstart=10
+nnoremap <leader>fu zM<cr>
+nnoremap <leader>uf zR<cr>
 
 set path+=**
+nnoremap <localleader>ct :!ctags -R .<cr><cr>
 command! MakeTags !ctags -R .
+set tags=./tags,tags;$HOME
+
+nnoremap <localleader>cd :cd %:h<cr>
 
 nmap j gj
 nmap k gk
+
+map Q gq
 
 autocmd vimenter * let &shell='/bin/zsh -i'
 
@@ -89,11 +108,10 @@ set noswapfile
 set expandtab
 set smarttab
 set shiftwidth=2
-set tabstop=2
+set tabstop=8
 set softtabstop=2
 
 set linebreak
-set textwidth=500
 set wrap
 
 set autoindent
@@ -224,24 +242,6 @@ endfunction
 
 vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
 
-" Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a`<esc>`<i`<esc>
-
-" Map auto complete of (, ", ', [
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-
 " Auto Pairs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap {<cr> {<cr>}<Esc>O
@@ -303,18 +303,6 @@ function! JavaScriptFold()
 endfunction
 
 """"""""""""""""""""""""""""""
-" => CoffeeScript section
-"""""""""""""""""""""""""""""""
-function! CoffeeScriptFold()
-    setl foldmethod=indent
-    setl foldlevelstart=1
-endfunction
-au FileType coffee call CoffeeScriptFold()
-
-au FileType gitcommit call setpos('.', [0, 1, 1, 0])
-
-
-""""""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
 " set termguicolors
@@ -323,12 +311,10 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-
 """"""""""""""""""""""""""""""
 " => Twig section
 """"""""""""""""""""""""""""""
 autocmd BufRead *.twig set syntax=html filetype=html
-
 
 """"""""""""""""""""""""""""""
 " => Markdown
@@ -341,6 +327,8 @@ au BufNewFile,BufRead /*.rasi setf css
 
 au FileType go :setlocal sw=4 ts=4 sts=4
 
+" => Git Section
+autocmd FileType gitcommit setlocal textwidth=72
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
@@ -374,3 +362,6 @@ cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
 
 autocmd vimenter * let &shell='/bin/zsh -i'
+
+set textwidth=80
+set formatoptions+=t
