@@ -1,9 +1,6 @@
 let mapleader = ","
 noremap \ ,
 
-source ~/.vim/vimrcs/filetypes.vim
-source ~/.vim/vimrcs/plugins_config.vim
-
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=500
@@ -64,7 +61,6 @@ nnoremap <leader>O O<Esc>
 syntax enable
 set background=dark
 set termguicolors
-colorscheme onedark
 set encoding=utf8
 set ffs=unix,dos,mac
 
