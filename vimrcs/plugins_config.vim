@@ -112,9 +112,8 @@ nnoremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 5, 4)<cr>
 
 " Vim and Git
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>gst :Gst<cr>
+nnoremap <leader>gs :Gst<cr>
 
 " Porting in zshrc aliases
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd vimenter * let &shell='/bin/zsh -i'
-

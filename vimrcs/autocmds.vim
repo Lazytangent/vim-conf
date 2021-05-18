@@ -1,3 +1,24 @@
+autocmd FocusGained,BufEnter * checktime
+autocmd vimenter * let &shell='/bin/zsh -i'
+
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+function! CleanExtraSpaces()
+  let save_cursor = getpos(".")
+  let old_query = getreg('/')
+  silent! %s/\s\+$//e
+  call setpos('.', save_cursor)
+  call setreg('/', old_query)
+endfun
+
+if has("autocmd")
+  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+endif
+
+" start terminal in insert mode
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
+
 " => Python section
 """"""""""""""""""""""""""""""
 let python_highlight_all = 1
@@ -8,7 +29,6 @@ autocmd BufNewFile,BufRead *.mako set ft=mako
 
 autocmd FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
 autocmd BufNewFile,BufRead *.py setlocal softtabstop=4 expandtab autoindent shiftwidth=4 textwidth=79
-
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
@@ -28,7 +48,6 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
-
 """"""""""""""""""""""""""""""
 " => CoffeeScript section
 """""""""""""""""""""""""""""""
@@ -41,7 +60,6 @@ autocmd FileType coffee call CoffeeScriptFold()
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 autocmd FileType gitcommit setlocal textwidth=72
 
-
 """"""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
@@ -51,12 +69,10 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-
 """"""""""""""""""""""""""""""
 " => Twig section
 """"""""""""""""""""""""""""""
 autocmd BufRead *.twig set syntax=html filetype=html
-
 
 """"""""""""""""""""""""""""""
 " => Markdown
