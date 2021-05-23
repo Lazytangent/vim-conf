@@ -1,16 +1,14 @@
 # Vim Config
 
-To set up on your machine, run 
+To set up on your machine, run
 
 ```bash
-git clone https://github.com/Lazytangent/dot-vim.git ~/.vim
+git clone https://github.com/Lazytangent/vim-conf.git ~/.vim_conf
 ```
 
-Then copy the `.vimrc` from the cloned repo into your home directory:
+Run the install script.
 
 ```bash
-cd ~/.vim
-cp .vimrc ~/
+cd ~/.vim_conf
+./install.sh
 ```
-
-WARNING: This last `cp` command will overwrite any file named `.vimrc` that you had in your home directory. That being the case, you may want to make a backup of that file somewhere so you don't just lose it.
