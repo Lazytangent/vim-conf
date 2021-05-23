@@ -60,18 +60,22 @@ set noswapfile
 set expandtab
 set smarttab
 set shiftwidth=2
-set tabstop=2
+set tabstop=8
 set softtabstop=2
 
 set linebreak
+set textwidth=80
+set wrap
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 
 set autoindent
 set smartindent
-set wrap
 
-" Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spell
+
+set splitright
+set splitbelow
 
 " Helper Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,11 +128,6 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
-" open new split panes to right and below
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set splitright
-set splitbelow
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
