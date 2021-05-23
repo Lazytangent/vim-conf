@@ -24,32 +24,16 @@ call plug#begin("~/.vim_conf/plugged")
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'yuezk/vim-js'
-  Plug 'instant-markdown/vim-instant-markdown'
-  Plug 'plasticboy/vim-markdown'
   Plug 'mrdotb/vim-tailwindcss'
   Plug 'nvie/vim-flake8'
-  Plug 'jmcantrell/vim-virtualenv'
 
   " General Use
   Plug 'scrooloose/nerdtree'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-dadbod'
-  Plug 'tpope/vim-heroku'
-  Plug 'tpope/vim-dotenv'
-  Plug 'lervag/vimtex'
-  Plug 'jondkinney/dragvisuals.vim'
   Plug 'junegunn/fzf.vim'
-  Plug 'psliwka/vim-smoothie'
-  Plug 'kana/vim-textobj-user'
-  Plug 'kana/vim-textobj-line'
-  Plug 'christoomey/vim-sort-motion'
-  Plug 'michaeljsmith/vim-indent-object'
 
 call plug#end()
 
@@ -60,23 +44,6 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeeMinimalUI = 1
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERGTreeStatusLink = ''
-
-" Vim-Instant-Markdown
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:instant_markdown_autostart = 0
-let g:instant_markdown_slow = 0
-let g:instant_markdown_open_to_the_world = 1
-let g:instant_markdown_autoscroll = 1
-
-" Drag Visuals
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:DVB_TrimWS = 1
-
-" Vim-Markdown
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:markdown_fenced_languages = [ 'html', 'python', 'css',
-      \ 'javascript', 'js=javascript', 'json=javascript',
-      \ 'sass' ]
 
 " Vim-Ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
