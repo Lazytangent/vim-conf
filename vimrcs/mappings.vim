@@ -2,7 +2,7 @@ let mapleader = ","
 let maplocalleader = " "
 noremap \ ,
 
-nnoremap <leader>w :w<cr>
+nnoremap <localleader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
 nnoremap <leader>gw :Gw<cr>
 nnoremap <leader>gs :Git<cr>
@@ -94,10 +94,3 @@ nnoremap <leader>tt :set completefunc=tailwind#complete<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>aF :ALEFix<cr>
 nnoremap <leader>aI :ALEInfo<cr>
-
-" Vim-Smooth-Scroll
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 5, 2)<cr>
-nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 5, 2)<cr>
-nnoremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 5, 4)<cr>
-nnoremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 5, 4)<cr>
