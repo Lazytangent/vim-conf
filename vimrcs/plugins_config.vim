@@ -93,16 +93,6 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css',
 nnoremap <leader>aF :ALEFix<cr>
 nnoremap <leader>aI :ALEInfo<cr>
 
-" ColorScheme Settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if (has("autocmd") && !has("gui_running"))
-  augroup colors
-    autocmd!
-    let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background })
-  augroup END
-endif
-
 " Vim-Smooth-Scroll
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 5, 2)<cr>
