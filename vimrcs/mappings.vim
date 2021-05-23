@@ -5,11 +5,32 @@ noremap \ ,
 nnoremap <leader>w :w<cr>
 nnoremap <leader>wq :wq<cr>
 nnoremap <leader>gw :Gw<cr>
+nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gc :Git commit<cr>
 nnoremap <leader>gp :Git push<cr>
 
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
+
+" => Command mode related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Smart mappings on the command line
+cno $h e ~/
+cno $d e ~/Desktop/
+cno $j e ./
+cno $c e <C-\>eCurrentFileDir("e")<cr>
+
+" $q is super useful when browsing on the command line
+" it deletes everything until the last slash
+cno $q <C-\>eDeleteTillSlash()<cr>
+
+" Bash like keys for the command line
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
+
+cnoremap <C-P> <Up>
+cnoremap <C-N> <Down>
 
 " Visual Mode related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,3 +75,29 @@ vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
 " turn terminal to normal mode with escape
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 tnoremap <Esc> <C-\><C-n>
+
+" NERDTree
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark<Space>
+map <leader>nf :NERDTreeFind<cr>
+nnoremap <leader>nm :NERDTreeFocus<cr>
+
+" Vim-Prettier
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>py :Prettier<cr>
+
+" Vim-TailwindCSS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>tt :set completefunc=tailwind#complete<cr>
+
+" Vim-Ale Shortcuts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>aF :ALEFix<cr>
+nnoremap <leader>aI :ALEInfo<cr>
+
+" Vim-Smooth-Scroll
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 5, 2)<cr>
+nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 5, 2)<cr>
+nnoremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 5, 4)<cr>
+nnoremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 5, 4)<cr>

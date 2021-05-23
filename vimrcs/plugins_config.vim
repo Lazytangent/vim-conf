@@ -3,12 +3,11 @@ let g:ale_disable_lsp = 1
 
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin("~/.nvim/plugged")
+call plug#begin("~/.vim_conf/plugged")
   " Plugin Section
   " Themes
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'joshdick/onedark.vim'
 
   " Languages/Syntax
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -20,9 +19,12 @@ call plug#begin("~/.nvim/plugged")
   Plug 'dense-analysis/ale'
   Plug 'mattn/emmet-vim'
 
+  Plug 'heavenshell/vim-jsdoc', { 'do': 'make install', 'for': ['javascript', 'javascript.jsx', 'typescript'] }
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'yuezk/vim-js'
+  Plug 'instant-markdown/vim-instant-markdown'
   Plug 'plasticboy/vim-markdown'
   Plug 'mrdotb/vim-tailwindcss'
   Plug 'nvie/vim-flake8'
@@ -31,12 +33,24 @@ call plug#begin("~/.nvim/plugged")
   " General Use
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'tpope/vim-commentary'
   Plug 'jiangmiao/auto-pairs'
   Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
+  Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-fugitive'
-  Plug 'terryma/vim-smooth-scroll'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-dadbod'
+  Plug 'tpope/vim-heroku'
+  Plug 'tpope/vim-dotenv'
+  Plug 'lervag/vimtex'
+  Plug 'jondkinney/dragvisuals.vim'
+  Plug 'junegunn/fzf.vim'
+  Plug 'psliwka/vim-smoothie'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-line'
+  Plug 'christoomey/vim-sort-motion'
+  Plug 'michaeljsmith/vim-indent-object'
 
 call plug#end()
 
@@ -51,25 +65,22 @@ let g:NERGTreeStatusLink = ''
 " Automatically close nvim if NERDTree is the only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Toggle
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
-nnoremap <leader>nm :NERDTreeFocus<cr>
-
-" Vim-Prettier
+" Vim-Instant-Markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>py :Prettier<cr>
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_slow = 0
+let g:instant_markdown_open_to_the_world = 1
+let g:instant_markdown_autoscroll = 1
+
+" Drag Visuals
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:DVB_TrimWS = 1
 
 " Vim-Markdown
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:markdown_fenced_languages = [ 'html', 'python', 'css',
       \ 'javascript', 'js=javascript', 'json=javascript',
       \ 'sass' ]
-
-" Vim-TailwindCSS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>tt :set completefunc=tailwind#complete<cr>
 
 " Vim-Ale
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,33 +98,3 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css',
       \ 'coc-sh', 'coc-yank', 'coc-vimlsp', 'coc-jedi',
       \ 'coc-clangd', 'coc-go', 'coc-yaml', 'coc-toml',
       \ 'coc-texlab', 'coc-tailwindcss']
-
-" Vim-Ale Shortcuts
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>aF :ALEFix<cr>
-nnoremap <leader>aI :ALEInfo<cr>
-
-" ColorScheme Settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if (has("autocmd") && !has("gui_running"))
-  augroup colors
-    autocmd!
-    let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background })
-  augroup END
-endif
-
-" Vim-Smooth-Scroll
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 5, 2)<cr>
-nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 5, 2)<cr>
-nnoremap <silent> <C-b> :call smooth_scroll#up(&scroll*2, 5, 4)<cr>
-nnoremap <silent> <C-f> :call smooth_scroll#down(&scroll*2, 5, 4)<cr>
-
-" Vim and Git
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>gs :Gst<cr>
-
-" Porting in zshrc aliases
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd vimenter * let &shell='/bin/zsh -i'
