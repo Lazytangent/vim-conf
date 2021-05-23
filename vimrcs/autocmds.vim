@@ -15,6 +15,9 @@ if has("autocmd")
   autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+" Automatically close nvim if NERDTree is the only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " start terminal in insert mode
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
