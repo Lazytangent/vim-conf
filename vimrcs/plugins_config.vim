@@ -52,6 +52,7 @@ let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'javascript': ['prettier', 'eslint'],
       \ 'python': ['autopep8', 'yapf'],
+      \ 'typescript': ['prettier', 'eslint'],
       \}
 
 " Vim-CoC
