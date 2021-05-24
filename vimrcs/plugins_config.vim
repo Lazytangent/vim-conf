@@ -30,6 +30,7 @@ call plug#begin("~/.vim_conf/plugged")
   " General Use
   Plug 'scrooloose/nerdtree'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
