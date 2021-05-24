@@ -3,7 +3,7 @@
 set history=500
 filetype plugin indent on
 set autoread
-au FocusGained,BufEnter * checktime
+autocmd FocusGained,BufEnter * checktime
 
 " Leader setup
 let mapleader = ","
@@ -64,7 +64,6 @@ set relativenumber
 set clipboard=unnamed
 set list
 " set listchars=tab:▸\ ,trail:▫
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set mouse=a
 set spell
 set cursorline
@@ -87,8 +86,6 @@ nmap k gk
 
 map Q gq
 
-autocmd vimenter * let &shell='/bin/zsh -i'
-
 " Colors and Fonts
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
@@ -100,7 +97,7 @@ set ffs=unix,dos,mac
 " Files, backups and undo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Text, tab and indent related
@@ -116,11 +113,11 @@ set wrap
 
 set autoindent
 
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Editing mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-fun! CleanExtraSpaces()
+function! CleanExtraSpaces()
   let save_cursor = getpos(".")
   let old_query = getreg('/')
   silent! %s/\s\+$//e
@@ -155,11 +152,11 @@ map <leader>tt :tabonly<cr>
 map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Editing mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-fun! CleanExtraSpaces()
+function! CleanExtraSpaces()
   let save_cursor = getpos(".")
   let old_query = getreg('/')
   silent! %s/\s\+$//e
@@ -187,6 +184,12 @@ noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>q :e ~/buffer<cr>
 map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
+
+nnoremap <C-k> :<C-U>exec "exec 'norm m`' | move -" . (1+v:count1)<cr>
+nnoremap <C-j> :<C-U>exec "exec 'norm m`' | move +" . (0+v:count1)<cr>
+
+vnoremap <C-k> :<C-U>exec "'<,'>move '<-" . (1+v:count1)<cr>gv
+vnoremap <C-j> :<C-U>exec "'<,'>move '>+" . (0+v:count1)<cr>gv
 
 " Helper Functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,24 +261,24 @@ tnoremap <Esc> <C-\><C-n>
 
 " start terminal in insert mode
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
+autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
 
 " => Python section
 """"""""""""""""""""""""""""""
 let python_highlight_all = 1
-au FileType python syn keyword pythonDecorator True None False self
+autocmd FileType python syn keyword pythonDecorator True None False self
 
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-au BufNewFile,BufRead *.mako set ft=mako
+autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
+autocmd BufNewFile,BufRead *.mako set ft=mako
 
-au BufNewFile,BufRead *.py setl ts=4 sts=4 expandtab autoindent shiftwidth=4 textwidth=79
+autocmd BufNewFile,BufRead *.py setl ts=4 sts=4 expandtab autoindent shiftwidth=4 textwidth=79
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-au FileType javascript call JavaScriptFold()
-au FileType javascript setlocal fen
-au FileType javascript setlocal nocindent
+autocmd FileType javascript call JavaScriptFold()
+autocmd FileType javascript setlocal fen
+autocmd FileType javascript setlocal nocindent
 
 function! JavaScriptFold() 
     setl foldmethod=syntax
@@ -306,12 +309,12 @@ autocmd BufRead *.twig set syntax=html filetype=html
 " => Markdown
 """"""""""""""""""""""""""""""
 let vim_markdown_folding_disabled = 1
-au FileType markdown setlocal shiftwidth=4 softtabstop=4 expandtab tabstop=4
-au BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd FileType markdown setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
-au BufNewFile,BufRead /*.rasi setf css
+autocmd BufNewFile,BufRead /*.rasi setf css
 
-au FileType go :setlocal sw=4 ts=4 sts=4
+autocmd FileType go :setlocal shiftwidth=4 softtabstop=4
 
 " => Git Section
 autocmd FileType gitcommit setlocal textwidth=72
@@ -330,19 +333,19 @@ endtry
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart mappings on the command line
-cno $h e ~/
-cno $d e ~/Desktop/
-cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
+cnoremap $h e ~/
+cnoremap $d e ~/Desktop/
+cnoremap $j e ./
+cnoremap $c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
+cnoremap $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
-cnoremap <C-A>		<Home>
-cnoremap <C-E>		<End>
-cnoremap <C-K>		<C-U>
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-K> <C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
