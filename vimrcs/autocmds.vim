@@ -1,8 +1,6 @@
 augroup startup
   autocmd!
-
   autocmd FocusGained,BufEnter * checktime
-  autocmd vimenter * let &shell='/bin/zsh -i'
 
   " start terminal in insert mode
   autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
