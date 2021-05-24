@@ -6,7 +6,7 @@ set autoread
 
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set so=7
+set scrolloff=7
 let $LANG='en'
 
 set wildmenu

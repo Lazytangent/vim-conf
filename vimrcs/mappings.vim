@@ -15,14 +15,14 @@ nnoremap <leader>O O<Esc>
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart mappings on the command line
-cno $h e ~/
-cno $d e ~/Desktop/
-cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
+cnoremap $h e ~/
+cnoremap $d e ~/Desktop/
+cnoremap $j e ./
+cnoremap $c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
+cnoremap $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
 cnoremap <C-A> <Home>
@@ -39,36 +39,36 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 
 " Moving around, tabs, windows, and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <leader><cr> :noh<cr>
+map      <silent> <leader><cr> :noh<cr>
 
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-map <leader>ba :bufdo bd<cr>
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+map      <leader>bd :Bclose<cr>:tabclose<cr>gT
+map      <leader>ba :bufdo bd<cr>
+map      <leader>l  :bnext<cr>
+map      <leader>h  :bprevious<cr>
 
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<cr>
-map <leader>tt :tabonly<cr>
+map      <leader>tn :tabnew<cr>
+map      <leader>to :tabonly<cr>
+map      <leader>tc :tabclose<cr>
+map      <leader>tm :tabmove<cr>
+map      <leader>tt :tabonly<cr>
 
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map      <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+map      <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Spell Checking
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>ss : setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+map     <leader>ss : setlocal spell!<cr>
+map     <leader>sn ]s
+map     <leader>sp [s
+map     <leader>sa zg
+map     <leader>s? z=
 
 " Misc.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-map <leader>q :e ~/buffer<cr>
-map <leader>x :e ~/buffer.md<cr>
-map <leader>pp :setlocal paste!<cr>
+noremap <leader>m  mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
+map     <leader>q  :e ~/buffer<cr>
+map     <leader>x  :e ~/buffer.md<cr>
+map     <leader>pp :setlocal paste!<cr>
 
 vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
 
@@ -77,9 +77,9 @@ vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
 tnoremap <Esc> <C-\><C-n>
 
 " NERDTree
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
+map      <leader>nn :NERDTreeToggle<cr>
+map      <leader>nb :NERDTreeFromBookmark<Space>
+map      <leader>nf :NERDTreeFind<cr>
 nnoremap <leader>nm :NERDTreeFocus<cr>
 
 " Vim-Prettier
