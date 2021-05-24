@@ -185,8 +185,8 @@ map <leader>q :e ~/buffer<cr>
 map <leader>x :e ~/buffer.md<cr>
 map <leader>pp :setlocal paste!<cr>
 
-nnoremap <C-k> :<C-U>exec "exec 'norm m`' | move -" . (1+v:count1)<cr>
-nnoremap <C-j> :<C-U>exec "exec 'norm m`' | move +" . (0+v:count1)<cr>
+nnoremap <C-k> :<C-U>exec "exec 'norm m`' \| move -" . (1+v:count1)<cr>``
+nnoremap <C-j> :<C-U>exec "exec 'norm m`' \| move +" . (0+v:count1)<cr>``
 
 vnoremap <C-k> :<C-U>exec "'<,'>move '<-" . (1+v:count1)<cr>gv
 vnoremap <C-j> :<C-U>exec "'<,'>move '>+" . (0+v:count1)<cr>gv
