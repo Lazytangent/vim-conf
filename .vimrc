@@ -63,7 +63,7 @@ set numberwidth=5
 set relativenumber
 set clipboard=unnamed
 set list
-" set listchars=tab:▸\ ,trail:▫
+set listchars=tab:▸\ ,trail:▫
 set mouse=a
 set spell
 set cursorline
