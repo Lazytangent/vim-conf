@@ -1,7 +1,17 @@
-autocmd FocusGained,BufEnter * checktime
-autocmd vimenter * let &shell='/bin/zsh -i'
+augroup startup
+  autocmd!
 
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  autocmd FocusGained,BufEnter * checktime
+  autocmd vimenter * let &shell='/bin/zsh -i'
+
+  " start terminal in insert mode
+  autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
+augroup END
+
+augroup closeout
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup END
 
 function! CleanExtraSpaces()
   let save_cursor = getpos(".")
@@ -15,59 +25,59 @@ if has("autocmd")
   autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
-" start terminal in insert mode
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
 
 " => Python section
 """"""""""""""""""""""""""""""
 let python_highlight_all = 1
-autocmd FileType python syn keyword pythonDecorator True None False self
+augroup python
+  autocmd!
+  autocmd FileType python syn keyword pythonDecorator True None False self
 
-autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
-autocmd BufNewFile,BufRead *.mako set ft=mako
+  autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
+  autocmd BufNewFile,BufRead *.mako set ft=mako
 
-autocmd FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
-autocmd BufNewFile,BufRead *.py setlocal softtabstop=4 expandtab autoindent shiftwidth=4 textwidth=79
+  autocmd FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
+  autocmd BufNewFile,BufRead *.py setlocal softtabstop=4 expandtab autoindent shiftwidth=4 textwidth=79
+augroup END
 
 """"""""""""""""""""""""""""""
 " => JavaScript section
 """""""""""""""""""""""""""""""
-autocmd FileType javascript call JavaScriptFold()
-autocmd FileType javascript setl fen
-autocmd FileType javascript setl nocindent
+augroup javascript
+  autocmd!
+  autocmd FileType javascript call JavaScriptFold()
+  autocmd FileType javascript setl fen
+  autocmd FileType javascript setl nocindent
 
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+  function! JavaScriptFold()
+      setl foldmethod=syntax
+      setl foldlevelstart=1
+      syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
+      function! FoldText()
+          return substitute(getline(v:foldstart), '{.*', '{...}', '')
+      endfunction
+      setl foldtext=FoldText()
+  endfunction
+augroup END
 
 """"""""""""""""""""""""""""""
 " => CoffeeScript section
 """""""""""""""""""""""""""""""
-function! CoffeeScriptFold()
-    setl foldmethod=indent
-    setl foldlevelstart=1
-endfunction
-autocmd FileType coffee call CoffeeScriptFold()
+augroup coffeescript
+  autocmd!
+  function! CoffeeScriptFold()
+      setl foldmethod=indent
+      setl foldlevelstart=1
+  endfunction
+  autocmd FileType coffee call CoffeeScriptFold()
+augroup END
 
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
-autocmd FileType gitcommit setlocal textwidth=72
-
-""""""""""""""""""""""""""""""
-" => Shell section
-""""""""""""""""""""""""""""""
-" set termguicolors
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+augroup gitcommit
+  autocmd!
+  autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+  autocmd FileType gitcommit setlocal textwidth=72
+augroup END
 
 """"""""""""""""""""""""""""""
 " => Twig section
