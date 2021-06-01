@@ -2,8 +2,8 @@ let mapleader = ","
 let maplocalleader = " "
 noremap \ ,
 
-nnoremap <localleader>w :w<cr>
-nnoremap <leader>wq :wq<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <localleader>wq :wq<cr>
 nnoremap <leader>gw :Gw<cr>
 nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gc :Git commit<cr>
