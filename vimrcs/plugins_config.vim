@@ -45,6 +45,9 @@ call plug#begin("~/.vim_conf/plugged")
 
 call plug#end()
 
+" Vim-Airline
+let g:airline_theme = "angr"
+
 " NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
