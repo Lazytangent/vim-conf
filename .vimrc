@@ -7,19 +7,18 @@ autocmd FocusGained,BufEnter * checktime
 
 " Leader setup
 let mapleader = ","
-let localmapleader = "\\"
+let maplocalleader = " "
 noremap \ ,
 
 " Quick Save Commands
 nnoremap <leader>w :w<cr>
-nnoremap <leader>wq :wq<cr>
+nnoremap <localleader>wq :wq<cr>
 cnoremap Q q!
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " More things
 nnoremap <leader>o o<Esc>
 nnoremap <leader>O O<Esc>
-nnoremap <leader>qa :qa<cr>
 
 " Line numbering shortcuts
 nnoremap <leader>rnu :set rnu!<cr>
@@ -280,7 +279,7 @@ autocmd FileType javascript call JavaScriptFold()
 autocmd FileType javascript setlocal fen
 autocmd FileType javascript setlocal nocindent
 
-function! JavaScriptFold() 
+function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
