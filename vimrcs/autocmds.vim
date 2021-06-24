@@ -29,10 +29,10 @@ endif
 let python_highlight_all = 1
 augroup python
   autocmd!
-  autocmd FileType python syn keyword pythonDecorator True None False self
+  autocmd FileType python syntax keyword pythonDecorator True None False self
 
   autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
-  autocmd BufNewFile,BufRead *.mako set ft=mako
+  autocmd BufNewFile,BufRead *.mako set filetype=mako
 
   autocmd FileType python let b:AutoPairs = AutoPairsDefine({"f'" : "'", "r'" : "'", "b'" : "'"})
   autocmd BufNewFile,BufRead *.py setlocal softtabstop=4 expandtab autoindent shiftwidth=4 textwidth=79
@@ -44,18 +44,18 @@ augroup END
 augroup javascript
   autocmd!
   autocmd FileType javascript call JavaScriptFold()
-  autocmd FileType javascript setl fen
-  autocmd FileType javascript setl nocindent
+  autocmd FileType javascript setlocal foldenable
+  autocmd FileType javascript setlocal nocindent
 
   function! JavaScriptFold()
-      setl foldmethod=syntax
-      setl foldlevelstart=1
-      syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+      setlocal foldmethod=syntax
+      setlocal foldlevelstart=1
+      syntax region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 
       function! FoldText()
           return substitute(getline(v:foldstart), '{.*', '{...}', '')
       endfunction
-      setl foldtext=FoldText()
+      setlocal foldtext=FoldText()
   endfunction
 augroup END
 
@@ -65,8 +65,8 @@ augroup END
 augroup coffeescript
   autocmd!
   function! CoffeeScriptFold()
-      setl foldmethod=indent
-      setl foldlevelstart=1
+      setlocal foldmethod=indent
+      setlocal foldlevelstart=1
   endfunction
   autocmd FileType coffee call CoffeeScriptFold()
 augroup END
@@ -86,8 +86,8 @@ autocmd BufRead *.twig set syntax=html filetype=html
 " => Markdown
 """"""""""""""""""""""""""""""
 let vim_markdown_folding_disabled = 1
-autocmd FileType markdown setl shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType markdown setlocal shiftwidth=4 softtabstop=4 expandtab
 
-autocmd BufNewFile,BufRead /*.rasi setf css
+autocmd BufNewFile,BufRead /*.rasi setfiletype css
 
 autocmd FileType go setlocal shiftwidth=4 softtabstop=4

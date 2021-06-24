@@ -6,7 +6,7 @@ set autoread
 
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set so=7
+set scrolloff=7
 let $LANG='en'
 
 set wildmenu
@@ -46,7 +46,7 @@ syntax enable
 set background=dark
 set termguicolors
 set encoding=utf8
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 colorscheme default
 
 " Files, backups and undo
@@ -59,8 +59,8 @@ set noswapfile
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
 set smarttab
-set shiftwidth=2
 set tabstop=8
+set shiftwidth=2
 set softtabstop=2
 
 set linebreak
@@ -143,6 +143,6 @@ endtry
 " => Shell section
 """"""""""""""""""""""""""""""
 if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 endif
