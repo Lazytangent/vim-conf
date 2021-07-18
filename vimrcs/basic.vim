@@ -7,7 +7,6 @@ set autoread
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=7
-let $LANG='en'
 
 set wildmenu
 set wildmode=longest:full,list:full
@@ -32,6 +31,9 @@ set magic
 set showmatch
 set mat=2
 set foldcolumn=1
+set foldmethod=marker
+set foldenable
+set foldlevelstart=10
 set noshowmode
 set number
 set relativenumber

@@ -4,13 +4,17 @@ noremap \ ,
 
 nnoremap <leader>w :w<cr>
 nnoremap <localleader>wq :wq<cr>
+nnoremap <localleader>fs :w<cr>
 nnoremap <leader>gw :Gw<cr>
 nnoremap <leader>gs :Git<cr>
 nnoremap <leader>gc :Git commit<cr>
 nnoremap <leader>gp :Git push<cr>
 
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
+nnoremap <localleader>ao o<Esc>
+nnoremap <localleader>aO O<Esc>
+
+nmap j gj
+nmap k gk
 
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
