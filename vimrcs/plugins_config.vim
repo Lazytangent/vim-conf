@@ -31,17 +31,21 @@ call plug#begin("~/.vim_conf/plugged")
   Plug 'peitalin/vim-jsx-typescript'
   Plug 'maxmellon/vim-jsx-pretty'
   Plug 'yuezk/vim-js'
-  Plug 'mrdotb/vim-tailwindcss'
   Plug 'nvie/vim-flake8'
 
   " General Use
   Plug 'scrooloose/nerdtree'
   Plug 'jiangmiao/auto-pairs'
+
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-unimpaired'
+
   Plug 'junegunn/fzf.vim'
+  Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
@@ -73,3 +77,5 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css',
       \ 'coc-sh', 'coc-yank', 'coc-vimlsp', 'coc-jedi',
       \ 'coc-clangd', 'coc-go', 'coc-yaml', 'coc-toml',
       \ 'coc-texlab', 'coc-tailwindcss']
+
+let g:sneak#label = 1
