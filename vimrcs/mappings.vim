@@ -5,10 +5,10 @@ noremap \ ,
 nnoremap <leader>w :w<cr>
 nnoremap <localleader>wq :wq<cr>
 nnoremap <localleader>fs :w<cr>
-nnoremap <leader>gw :Gw<cr>
-nnoremap <leader>gs :Git<cr>
-nnoremap <leader>gc :Git commit<cr>
-nnoremap <leader>gp :Git push<cr>
+nnoremap <localleader>gw :Gw<cr>
+nnoremap <localleader>gs :Git<cr>
+nnoremap <localleader>gc :Git commit<cr>
+nnoremap <localleader>gp :Git push<cr>
 
 nnoremap <localleader>ao o<Esc>
 nnoremap <localleader>aO O<Esc>
