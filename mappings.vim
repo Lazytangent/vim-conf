@@ -93,3 +93,5 @@ cnoremap <C-K> <C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
+
+command! MakeTags !ctags -R .
