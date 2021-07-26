@@ -1,3 +1,5 @@
+set runtimepath+=~/.vim_conf
+
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set history=500
@@ -262,34 +264,6 @@ tnoremap <Esc> <C-\><C-n>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
 
-" => Python section
-""""""""""""""""""""""""""""""
-let python_highlight_all = 1
-autocmd FileType python syn keyword pythonDecorator True None False self
-
-autocmd BufNewFile,BufRead *.jinja set syntax=htmljinja
-autocmd BufNewFile,BufRead *.mako set ft=mako
-
-autocmd BufNewFile,BufRead *.py setl ts=4 sts=4 expandtab autoindent shiftwidth=4 textwidth=79
-
-""""""""""""""""""""""""""""""
-" => JavaScript section
-"""""""""""""""""""""""""""""""
-autocmd FileType javascript call JavaScriptFold()
-autocmd FileType javascript setlocal fen
-autocmd FileType javascript setlocal nocindent
-
-function! JavaScriptFold()
-    setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
-endfunction
-
 """"""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
@@ -300,23 +274,9 @@ if exists('+termguicolors')
 endif
 
 """"""""""""""""""""""""""""""
-" => Twig section
-""""""""""""""""""""""""""""""
-autocmd BufRead *.twig set syntax=html filetype=html
-
-""""""""""""""""""""""""""""""
 " => Markdown
 """"""""""""""""""""""""""""""
 let vim_markdown_folding_disabled = 1
-autocmd FileType markdown setlocal shiftwidth=4 softtabstop=4 expandtab
-autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-
-autocmd BufNewFile,BufRead /*.rasi setf css
-
-autocmd FileType go :setlocal shiftwidth=4 softtabstop=4
-
-" => Git Section
-autocmd FileType gitcommit setlocal textwidth=72
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
