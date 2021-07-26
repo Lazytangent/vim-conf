@@ -1,22 +1,24 @@
+" Configure runtime settings
 set runtimepath+=~/.vim_conf
 runtime! **/mappings.vim
+runtime! **/options.vim
+runtime! **/autocmds.vim
 
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
 set history=500
 set autoread
-augroup Time
-  autocmd!
-  autocmd FocusGained,BufEnter * checktime
-augroup END
 
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=7
 
+set textwidth=80
+set formatoptions+=t
+
 set wildmenu
-set wildmode=longest:full,list:full
+set wildmode=longest,list
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
   set wildignore+=.git\*,.hg\*,.svn\*
@@ -85,104 +87,14 @@ set wrap
 
 set autoindent
 
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CleanExtraSpaces()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  silent! %s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfun
-
-if has("autocmd")
-  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-endif
-
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CleanExtraSpaces()
-  let save_cursor = getpos(".")
-  let old_query = getreg('/')
-  silent! %s/\s\+$//e
-  call setpos('.', save_cursor)
-  call setreg('/', old_query)
-endfun
-
-if has("autocmd")
-  autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
-endif
-
 set spell
-
-" Helper Functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    return ''
-    endif
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
-
-function! CmdLine(str)
-    call feedkeys(":" . a:str)
-endfunction
-
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
 
 " open new split panes to right and below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
 
-" start terminal in insert mode
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif | :set nospell
-
-""""""""""""""""""""""""""""""
-" => Shell section
-""""""""""""""""""""""""""""""
+" Shell section
 " set termguicolors
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -198,6 +110,3 @@ try
     set undofile
 catch
 endtry
-
-set textwidth=80
-set formatoptions+=t
