@@ -41,7 +41,7 @@ set list
 set listchars=tab:▸\ ,trail:▫
 set mouse=a
 set spell
-set cursorline
+" set cursorline
 set modeline
 
 set foldenable
