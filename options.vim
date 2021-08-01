@@ -41,7 +41,6 @@ set list
 set listchars=tab:▸\ ,trail:▫
 set mouse=a
 set spell
-" set cursorline
 set modeline
 
 set foldenable
@@ -82,4 +81,3 @@ set spell
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
-
