@@ -43,7 +43,7 @@ set background=dark
 set termguicolors
 set encoding=utf8
 set fileformats=unix,dos,mac
-colorscheme default
+colorscheme murphy
 
 " Files, backups and undo
 set nobackup
