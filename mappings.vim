@@ -1,9 +1,11 @@
+" Leader Keys
 let mapleader = ","
 let maplocalleader = " "
 noremap \ ,
 
-nnoremap <localleader>w :w<cr>
+nnoremap <localleader>wq :wq<cr>
 nnoremap <localleader>fs :w<cr>
+
 nnoremap <localleader>gw :Gw<cr>
 nnoremap <localleader>gs :Git<cr>
 nnoremap <localleader>gc :Git commit<cr>
@@ -11,6 +13,16 @@ nnoremap <localleader>gp :Git push<cr>
 
 nnoremap <localleader>ao o<Esc>
 nnoremap <localleader>aO O<Esc>
+
+nnoremap <leader>nr :set relativenumber!<cr>
+nnoremap <leader>nn :set number!<cr>
+
+command! MakeTags !ctags -R .
+nnoremap <localleader>ct :!ctags -R .<cr><cr>
+nnoremap <localleader>cd :cd %:h<cr>
+
+nmap j gj
+nmap k gk
 
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -39,7 +51,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 
 " Moving around, tabs, windows, and buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader><cr> :nohlsearch<cr>
 
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
