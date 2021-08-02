@@ -1,6 +1,13 @@
 set runtimepath+=~/.vim_conf
+runtime! **/mappings.vim
+runtime! **/options.vim
+runtime! **/autocmds.vim
 
-source ~/.vim_conf/vimrcs/plugins_config.vim
-source ~/.vim_conf/vimrcs/autocmds.vim
-source ~/.vim_conf/vimrcs/basic.vim
-source ~/.vim_conf/vimrcs/mappings.vim
+filetype plugin indent on
+syntax enable
+
+try
+    set undodir=~/.vim_conf/temp_dirs/undodir
+    set undofile
+catch
+endtry
