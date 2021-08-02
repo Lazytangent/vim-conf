@@ -3,26 +3,26 @@ let maplocalleader = " "
 noremap \ ,
 
 nnoremap <localleader>w :w<cr>
-nnoremap <leader>wq :wq<cr>
-nnoremap <leader>gw :Gw<cr>
-nnoremap <leader>gs :Git<cr>
-nnoremap <leader>gc :Git commit<cr>
-nnoremap <leader>gp :Git push<cr>
+nnoremap <localleader>fs :w<cr>
+nnoremap <localleader>gw :Gw<cr>
+nnoremap <localleader>gs :Git<cr>
+nnoremap <localleader>gc :Git commit<cr>
+nnoremap <localleader>gp :Git push<cr>
 
-nnoremap <leader>o o<Esc>
-nnoremap <leader>O O<Esc>
+nnoremap <localleader>ao o<Esc>
+nnoremap <localleader>aO O<Esc>
 
 " => Command mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Smart mappings on the command line
-cno $h e ~/
-cno $d e ~/Desktop/
-cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
+cnoremap $h e ~/
+cnoremap $d e ~/Desktop/
+cnoremap $j e ./
+cnoremap $c e <C-\>eCurrentFileDir("e")<cr>
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
+cnoremap $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
 cnoremap <C-A> <Home>
@@ -41,19 +41,8 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<cr>?<C-R>=@/<cr><cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <leader><cr> :noh<cr>
 
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
-
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<cr>
-map <leader>tt :tabonly<cr>
-
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Spell Checking
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -65,16 +54,7 @@ map <leader>s? z=
 
 " Misc.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-map <leader>q :e ~/buffer<cr>
-map <leader>x :e ~/buffer.md<cr>
-map <leader>pp :setlocal paste!<cr>
-
 vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
-
-" turn terminal to normal mode with escape
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-tnoremap <Esc> <C-\><C-n>
 
 " NERDTree
 map <leader>nn :NERDTreeToggle<cr>

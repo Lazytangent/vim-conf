@@ -15,6 +15,7 @@ else
   set wildignore+=*/.git*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+set completeopt=noinsert,menuone,popup
 set ruler
 set cmdheight=1
 set hidden
@@ -27,7 +28,7 @@ set incsearch
 set lazyredraw
 set magic
 set showmatch
-set mat=2
+set matchtime=2
 set foldcolumn=1
 set noshowmode
 set number
