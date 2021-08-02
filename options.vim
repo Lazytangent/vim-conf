@@ -17,6 +17,7 @@ else
   set wildignore+=*/.git*,*/.hg/*,*/.svn/*,*/.DS_Store
 endif
 
+set completeopt=noinsert,menuone,popup
 set showcmd
 set cmdheight=1
 set ruler
