@@ -31,7 +31,7 @@ set incsearch
 set lazyredraw
 set magic
 set showmatch
-set mat=2
+set matchtime=2
 set foldcolumn=1
 
 set number
