@@ -21,10 +21,10 @@ nnoremap <leader>nnu :set number!<cr>
 nnoremap <localleader>rc :source ~/.vimrc<cr>
 
 " Ctags
-nnoremap <localleader>ct :!ctags -R .<cr><cr>
+nnoremap <leader>ct :!ctags -R .<cr><cr>
 
 " Change directory
-nnoremap <localleader>cd :cd %:h<cr>
+nnoremap <leader>cd :cd %:h<cr>
 
 " Move vertically by visual line
 nmap j gj
@@ -47,16 +47,11 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" Misc.
-noremap <leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
 nnoremap <C-k> :<C-U>exec "exec 'norm m`' \| move -" . (1+v:count1)<cr>``
 nnoremap <C-j> :<C-U>exec "exec 'norm m`' \| move +" . (0+v:count1)<cr>``
 
 vnoremap <C-k> :<C-U>exec "'<,'>move '<-" . (1+v:count1)<cr>gv
 vnoremap <C-j> :<C-U>exec "'<,'>move '>+" . (0+v:count1)<cr>gv
-
-vnoremap <C-c> :w !xclip -i -sel c<CR><CR>
 
 " Auto Pairs
 inoremap {<cr> {<cr>}<Esc>O
