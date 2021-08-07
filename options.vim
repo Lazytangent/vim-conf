@@ -82,3 +82,5 @@ set spell
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
+
+set omnifunc=syntaxcomplete#Complete
