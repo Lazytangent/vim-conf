@@ -41,7 +41,7 @@ map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
 " Spell Checking
-map <leader>ss : setlocal spell!<cr>
+map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg

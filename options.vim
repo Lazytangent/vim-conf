@@ -34,8 +34,8 @@ set showmatch
 set matchtime=2
 set foldcolumn=1
 
-set number
 set numberwidth=5
+set number
 set relativenumber
 set clipboard=unnamedplus
 set list
