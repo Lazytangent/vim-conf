@@ -1,8 +1,6 @@
 set history=500
 set autoread
 
-" Vim UI
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set scrolloff=7
 
 set textwidth=80
@@ -50,35 +48,26 @@ set foldlevelstart=10
 set path+=**
 set tags=./tags,tags;$HOME
 
-" Colors and Fonts
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 set termguicolors
 set encoding=utf8
 set fileformats=unix,dos,mac
 
-" Files, backups and undo
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nobackup
 set nowritebackup
 set noswapfile
 
-" Text, tab and indent related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
 set smarttab
 set tabstop=8
 set shiftwidth=2
 set softtabstop=2
+set autoindent
 
 set linebreak
 set wrap
 
-set autoindent
-
 set spell
 
-" open new split panes to right and below
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set splitright
 set splitbelow
