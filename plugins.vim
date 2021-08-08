@@ -98,3 +98,9 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css',
       \ 'coc-sh', 'coc-yank', 'coc-vimlsp', 'coc-jedi',
       \ 'coc-clangd', 'coc-go', 'coc-yaml', 'coc-toml',
       \ 'coc-texlab', 'coc-tailwindcss']
+
+" VimTeX
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_mode = 0
+let g:tex_conceal = 'adbmg'
